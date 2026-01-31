@@ -1,0 +1,22 @@
+{
+  "fp32": {
+    "accuracy": 76.48,
+    "params_m": 5.773242,
+    "size_mb": 22.185400009155273
+  },
+  "quantized": {
+    "accuracy": 95.22,
+    "size_mb": 22.175203323364258,
+    "latency_ms": 98.58511299957172
+  },
+  "improvements": {
+    "compression_ratio": 1.0004598237789446,
+    "accuracy_drop": -18.739999999999995,
+    "size_reduction_percent": 0.045961243821646125
+  },
+  "config": {
+    "quant_type": "dynamic",
+    "backend": "fbgemm",
+    "model": "ghost_resnet18"
+  }
+}

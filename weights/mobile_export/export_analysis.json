@@ -1,0 +1,24 @@
+{
+  "torchscript": {
+    "path": "weights/mobile_export\\ghost_resnet18.pt",
+    "file_size_mb": 22.48252296447754,
+    "format": ".pt",
+    "latency_ms": {
+      "mean": 120.98589399916818,
+      "std": 121.19688412966168,
+      "min": 47.52330000337679,
+      "max": 774.8461000010138
+    }
+  },
+  "mobile": {
+    "path": "weights/mobile_export\\ghost_resnet18_mobile.ptl",
+    "file_size_mb": 22.039219856262207,
+    "format": ".ptl",
+    "latency_ms": {
+      "mean": 438.15426800007117,
+      "std": 371.72860284754574,
+      "min": 14.129199989838526,
+      "max": 1339.5014999987325
+    }
+  }
+}

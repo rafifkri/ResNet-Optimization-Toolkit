@@ -1,0 +1,25 @@
+{
+  "teacher": {
+    "model": "ghost_resnet18",
+    "accuracy": 76.72,
+    "params_m": 5.773242,
+    "flops_m": 287.610368
+  },
+  "student": {
+    "model": "ghost_resnet_small",
+    "accuracy": 93.79,
+    "top5_accuracy": 99.68,
+    "params_m": 1.458218,
+    "flops_m": 73.750784,
+    "latency_ms": 43.477660000207834
+  },
+  "distillation": {
+    "temperature": 4.0,
+    "alpha": 0.9,
+    "feature_weight": 0.0,
+    "attention_weight": 0.0,
+    "rkd_weight": 0.0
+  },
+  "compression_ratio": 3.959107623140024,
+  "accuracy_gap": -17.070000000000007
+}

@@ -1,0 +1,51 @@
+2026-01-30 10:55:49 | INFO | Experiment: pruning_structured_0.5_20260130_105549
+2026-01-30 10:55:49 | INFO | Arguments: {'model': 'ghost_resnet18', 'attention': 'coordinate', 'pretrained_path': 'weights/baseline.pth', 'dataset': 'cifar10', 'pruning_type': 'structured', 'target_sparsity': 0.5, 'iterative': False, 'num_iterations': 10, 'epochs_per_iteration': 5, 'finetune_epochs': 20, 'learning_rate': 0.001, 'sensitivity_analysis': False, 'compare_methods': False, 'amp': True, 'save_dir': 'weights/pruning_experiments'}
+2026-01-30 10:55:55 | INFO | 
+==================================================
+2026-01-30 10:55:55 | INFO | Initial Model Analysis
+2026-01-30 10:55:55 | INFO | ==================================================
+2026-01-30 10:56:46 | INFO | Accuracy: 76.68%
+2026-01-30 10:56:46 | INFO | Parameters: 5.77M
+2026-01-30 10:56:46 | INFO | FLOPs: 287.61M
+2026-01-30 10:56:46 | INFO | 
+==================================================
+2026-01-30 10:56:46 | INFO | Applying structured Pruning
+2026-01-30 10:56:46 | INFO | ==================================================
+2026-01-30 10:56:46 | INFO | 
+Fine-tuning for 20 epochs...
+2026-01-30 10:58:58 | INFO | Epoch 1: Train Loss=1.336, Train Acc=63.0%, Val Acc=67.30%
+2026-01-30 11:02:46 | INFO | Epoch 2: Train Loss=1.089, Train Acc=73.8%, Val Acc=71.52%
+2026-01-30 11:07:02 | INFO | Epoch 3: Train Loss=1.038, Train Acc=76.1%, Val Acc=73.28%
+2026-01-30 11:10:17 | INFO | Epoch 4: Train Loss=0.999, Train Acc=77.7%, Val Acc=75.94%
+2026-01-30 11:13:44 | INFO | Epoch 5: Train Loss=0.972, Train Acc=79.0%, Val Acc=74.28%
+2026-01-30 11:17:05 | INFO | Epoch 6: Train Loss=0.955, Train Acc=79.9%, Val Acc=78.14%
+2026-01-30 11:19:13 | INFO | Epoch 7: Train Loss=0.937, Train Acc=80.7%, Val Acc=78.38%
+2026-01-30 11:21:20 | INFO | Epoch 8: Train Loss=0.923, Train Acc=81.2%, Val Acc=79.06%
+2026-01-30 11:23:27 | INFO | Epoch 9: Train Loss=0.905, Train Acc=82.0%, Val Acc=78.92%
+2026-01-30 11:25:42 | INFO | Epoch 10: Train Loss=0.890, Train Acc=82.7%, Val Acc=80.72%
+2026-01-30 11:28:58 | INFO | Epoch 11: Train Loss=0.871, Train Acc=83.5%, Val Acc=80.20%
+2026-01-30 11:33:13 | INFO | Epoch 12: Train Loss=0.857, Train Acc=84.1%, Val Acc=81.78%
+2026-01-30 11:35:23 | INFO | Epoch 13: Train Loss=0.844, Train Acc=84.7%, Val Acc=81.62%
+2026-01-30 11:37:34 | INFO | Epoch 14: Train Loss=0.837, Train Acc=84.9%, Val Acc=81.86%
+2026-01-30 11:39:45 | INFO | Epoch 15: Train Loss=0.820, Train Acc=85.7%, Val Acc=82.84%
+2026-01-30 11:42:10 | INFO | Epoch 16: Train Loss=0.816, Train Acc=85.9%, Val Acc=83.54%
+2026-01-30 11:46:13 | INFO | Epoch 17: Train Loss=0.807, Train Acc=86.4%, Val Acc=83.54%
+2026-01-30 11:50:15 | INFO | Epoch 18: Train Loss=0.795, Train Acc=86.9%, Val Acc=83.96%
+2026-01-30 11:54:36 | INFO | Epoch 19: Train Loss=0.800, Train Acc=86.6%, Val Acc=84.24%
+2026-01-30 11:57:03 | INFO | Epoch 20: Train Loss=0.791, Train Acc=87.0%, Val Acc=83.68%
+2026-01-30 11:57:03 | INFO | 
+==================================================
+2026-01-30 11:57:03 | INFO | Final Model Analysis
+2026-01-30 11:57:03 | INFO | ==================================================
+2026-01-30 11:57:46 | INFO | Test Accuracy: 93.00%
+2026-01-30 11:57:46 | INFO | Sparsity: 49.9%
+2026-01-30 11:57:46 | INFO | Parameters: 5.77M
+2026-01-30 11:57:46 | INFO | FLOPs: 287.61M
+2026-01-30 11:57:46 | INFO | Latency: 12.96 ± 7.81 ms
+2026-01-30 11:57:46 | INFO | 
+Compression ratio: 1.00x
+2026-01-30 11:57:46 | INFO | Theoretical speedup: 1.00x
+2026-01-30 11:57:46 | INFO | Accuracy drop: -16.32%
+2026-01-30 11:57:46 | INFO | 
+Results saved to weights\pruning_experiments\pruning_structured_0.5_20260130_105549
+2026-01-30 11:57:46 | INFO | Logging closed

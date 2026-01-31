@@ -1,0 +1,19 @@
+{
+  "initial": {
+    "accuracy": 76.68,
+    "params_m": 5.773242,
+    "flops_m": 287.610368
+  },
+  "final": {
+    "accuracy": 93.0,
+    "sparsity": 49.913261185143654,
+    "params_m": 5.773242,
+    "flops_m": 287.610368,
+    "latency_ms": 12.960557999758748
+  },
+  "compression": {
+    "ratio": 1.0,
+    "speedup": 1.0,
+    "accuracy_drop": -16.319999999999993
+  }
+}

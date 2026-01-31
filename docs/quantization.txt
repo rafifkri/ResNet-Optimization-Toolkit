@@ -1,0 +1,40 @@
+Using device: cuda
+Quantization backend: fbgemm
+07:39:59 | INFO | Experiment: quantization_dynamic_ghost_resnet18_20260131_073959
+07:39:59 | INFO | Arguments: {'model': 'ghost_resnet18', 'attention': 'coordinate', 'pretrained_path': 'weights/baseline.pth', 'dataset': 'cifar10', 'quant_type': 'dynamic', 'backend': 'fbgemm', 'num_calibration_samples': 1000, 'num_calibration_batches': 100, 'qat_epochs': 10, 'learning_rate': 0.0001, 'sensitive_layers': None, 'analyze_error': False, 'compare_methods': False, 'include_qat': False, 'save_dir': 'weights/quantization_experiments'}
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+07:40:03 | INFO | 
+==================================================
+07:40:03 | INFO | Loading Model
+07:40:03 | INFO | ==================================================
+07:40:03 | INFO | Loading weights from weights/baseline.pth
+07:40:03 | INFO | Loaded 306 parameters from checkpoint
+07:41:36 | INFO | 
+FP32 Model:
+07:41:36 | INFO |   Accuracy: 76.48%
+07:41:36 | INFO |   Parameters: 5.77M
+07:41:36 | INFO |   Size: 22.19MB
+07:41:36 | INFO | 
+==================================================
+07:41:36 | INFO | Applying DYNAMIC Quantization
+07:41:36 | INFO | ==================================================
+07:41:36 | INFO | 
+==================================================
+07:41:36 | INFO | Quantized Model Evaluation
+07:41:36 | INFO | ==================================================
+07:44:51 | INFO | Quantized Model (INT8):
+07:44:51 | INFO |   Test Accuracy: 95.22%
+07:44:51 | INFO |   Size: 22.18MB
+07:44:51 | INFO |   Latency (CPU): 98.59 Â± 94.43 ms
+07:44:51 | INFO | 
+Improvements:
+07:44:51 | INFO |   Compression ratio: 1.00x
+07:44:51 | INFO |   Size reduction: 0.0%
+07:44:51 | INFO |   Accuracy drop: -18.74%
+07:44:58 | INFO | 
+TorchScript model saved to weights\quantization_experiments\quantization_dynamic_ghost_resnet18_20260131_073959\quantized_model_scripted.pt
+07:44:58 | INFO | 
+Results saved to weights\quantization_experiments\quantization_dynamic_ghost_resnet18_20260131_073959
+07:44:58 | INFO | Logging closed

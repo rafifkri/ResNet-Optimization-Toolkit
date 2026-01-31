@@ -1,0 +1,15 @@
+==================================================
+11:57:03 | INFO | Final Model Analysis
+11:57:03 | INFO | ==================================================
+11:57:46 | INFO | Test Accuracy: 93.00%
+11:57:46 | INFO | Sparsity: 49.9%
+11:57:46 | INFO | Parameters: 5.77M
+11:57:46 | INFO | FLOPs: 287.61M
+11:57:46 | INFO | Latency: 12.96 ± 7.81 ms
+11:57:46 | INFO |
+Compression ratio: 1.00x
+11:57:46 | INFO | Theoretical speedup: 1.00x
+11:57:46 | INFO | Accuracy drop: -16.32%
+11:57:46 | INFO | 
+Results saved to weights\pruning_experiments\pruning_structured_0.5_20260130_105549
+11:57:46 | INFO | Logging closed

@@ -1,0 +1,2 @@
+2026-01-30 10:47:59 | INFO | Experiment: pruning_structured_0.5_20260130_104759
+2026-01-30 10:47:59 | INFO | Arguments: {'model': 'ghost_resnet18', 'attention': 'coord', 'pretrained_path': 'weights/baseline.pth', 'dataset': 'cifar10', 'pruning_type': 'structured', 'target_sparsity': 0.5, 'iterative': False, 'num_iterations': 10, 'epochs_per_iteration': 5, 'finetune_epochs': 20, 'learning_rate': 0.001, 'sensitivity_analysis': False, 'compare_methods': False, 'amp': True, 'save_dir': 'weights/pruning_experiments'}

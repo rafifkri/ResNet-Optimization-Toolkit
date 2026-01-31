@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-01-31T08:39:45.070236",
+  "device": "cuda",
+  "results": {
+    "Baseline (GhostResNet-18 + CoordAtt)": {
+      "accuracy": 95.23,
+      "params_m": 5.773242,
+      "weight_path": "weights/baseline.pth"
+    },
+    "Pruned Model (50% sparsity)": {
+      "accuracy": 93.0,
+      "params_m": 5.773242,
+      "weight_path": "weights/pruning_experiments/pruning_structured_0.5_20260130_105549/pruned_model.pth"
+    },
+    "Distilled Student": {
+      "accuracy": 93.74,
+      "params_m": 1.458218,
+      "weight_path": "weights/distillation_experiments/distillation_ghost_resnet18_ghost_resnet_small_20260130_141604/experiment/best_model.pth"
+    },
+    "Quantized Model (Dynamic INT8)": {
+      "accuracy": 95.22,
+      "params_m": 5.768112,
+      "weight_path": "weights/quantization_experiments/quantization_dynamic_ghost_resnet18_20260131_073959/quantized_model_scripted.pt"
+    }
+  }
+}

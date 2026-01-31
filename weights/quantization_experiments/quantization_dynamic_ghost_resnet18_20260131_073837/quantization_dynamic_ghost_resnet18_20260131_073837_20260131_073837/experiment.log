@@ -1,0 +1,6 @@
+2026-01-31 07:38:37 | INFO | Experiment: quantization_dynamic_ghost_resnet18_20260131_073837
+2026-01-31 07:38:37 | INFO | Arguments: {'model': 'ghost_resnet18', 'attention': 'coordinate', 'pretrained_path': 'weights/baseline.pth', 'dataset': 'cifar10', 'quant_type': 'dynamic', 'backend': 'fbgemm', 'num_calibration_samples': 1000, 'num_calibration_batches': 100, 'qat_epochs': 10, 'learning_rate': 0.0001, 'sensitive_layers': None, 'analyze_error': False, 'compare_methods': False, 'include_qat': False, 'save_dir': 'weights/quantization_experiments'}
+2026-01-31 07:38:43 | INFO | 
+==================================================
+2026-01-31 07:38:43 | INFO | Loading Model
+2026-01-31 07:38:43 | INFO | ==================================================

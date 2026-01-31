@@ -1,0 +1,32 @@
+============================================================
+Laptop/Desktop Benchmark Suite
+============================================================
+Benchmarking PyTorch CPU...
+Benchmarking PyTorch CUDA...
+Benchmarking PyTorch AMP...
+C:\Users\Rafif Fikri\OneDrive\Documents\Optimasi_ResNet\deployment\laptop_bench.py:151: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.no_grad(), torch.cuda.amp.autocast():
+Profiling GPU memory...
+Profiling CPU memory...
+
+================================================================================
+BENCHMARK SUMMARY
+================================================================================
+
+Model: ghost_resnet18
+Input Size: (1, 3, 32, 32)
+Parameters: 5.77M
+FLOPs: 287.61M
+
+--------------------------------------------------------------------------------
+Runtime                   Batch    Latency (ms)    Throughput
+--------------------------------------------------------------------------------
+PyTorch CPU               1        102.93 ± 97.86    9.7 samples/s
+PyTorch CPU               8        282.50 ± 155.87    28.3 samples/s
+PyTorch CPU               16       507.47 ± 169.92    31.5 samples/s
+PyTorch CPU               32       699.48 ± 173.26    45.7 samples/s
+PyTorch CUDA              1        60.07 ± 68.79    16.6 samples/s
+PyTorch CUDA              8        51.36 ± 64.18    155.8 samples/s
+PyTorch CUDA              16       51.38 ± 65.55    311.4 samples/s
+PyTorch CUDA              32       51.91 ± 60.67    616.4 samples/s
+--------------------------------------------------------------------------------

@@ -1,0 +1,7 @@
+{
+  "model_name": "resnet18",
+  "test_accuracy": 9.44,
+  "total_params": 11173962,
+  "inference_latency_ms": 5.709249000210548,
+  "throughput_bs128": 3147.692124406491
+}

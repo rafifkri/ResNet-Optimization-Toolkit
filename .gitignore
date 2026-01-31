@@ -1,0 +1,139 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Data files
+data/
+
+# Model weights (large files)
+weights/**/*.pth
+weights/**/*.pt
+weights/**/*.onnx
+weights/**/*.tflite
+weights/*.pth
+*.pth
+*.pt
+
+# Keep structure but ignore large contents
+!weights/.gitkeep
+!outputs/**/.gitkeep
+
+# Training logs (keep only latest/best)
+logs/
+
+# =============================================
+# TRACKED: Hasil yang mau muncul di GitHub
+# =============================================
+# - outputs/figures/ → visualisasi hasil (TRACKED)
+# - outputs/results/ → metrics CSV/JSON (TRACKED)  
+# - experiments/results/ → hasil eksperimen (TRACKED)
+# - config.py → konfigurasi (TRACKED)
+# - notebooks/ → analisis notebooks (TRACKED)
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Large dataset files
+*.tar.gz
+*.zip
+*.tar
+*.gz
