@@ -2,7 +2,6 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **Paper Title**: *Efficient ResNet Optimization via Ghost Modules, Coordinate Attention, Structured Pruning, Knowledge Distillation, and INT8 Quantization for Resource-Constrained Devices*
 
