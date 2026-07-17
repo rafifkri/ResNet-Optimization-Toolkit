@@ -29,7 +29,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.cuda.amp import GradScaler, autocast
+from torch.amp import GradScaler, autocast
 from tqdm import tqdm
 import numpy as np
 
@@ -396,7 +396,7 @@ def train_one_epoch(
     student.train()
     teacher.eval()
     
-    scaler = GradScaler(enabled=use_amp)
+    scaler = GradScaler('cuda', enabled=use_amp)
     
     loss_meter = AverageMeter('Loss')
     soft_loss_meter = AverageMeter('Soft')
@@ -417,7 +417,7 @@ def train_one_epoch(
         
         optimizer.zero_grad()
         
-        with autocast(enabled=use_amp):
+        with autocast(device_type='cuda', enabled=use_amp):
             # Get teacher outputs (no gradient)
             with torch.no_grad():
                 if extract_features:

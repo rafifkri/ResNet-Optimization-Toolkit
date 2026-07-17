@@ -1,23 +1,9 @@
-"""
-===================================================================================
-Baseline ResNet Implementation
-===================================================================================
-Implements: ResNet-18, ResNet-34, ResNet-50 with optional attention and dropout
-Reference: Deep Residual Learning for Image Recognition (CVPR 2016)
-===================================================================================
-"""
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from typing import Type, List, Optional, Union
 from models.layers.attention import get_attention
 from models.layers.drop_path import DropPath
-
-
-# ===================================================================================
-# BASIC BUILDING BLOCKS
-# ===================================================================================
 
 class BasicBlock(nn.Module):
     """
@@ -77,11 +63,7 @@ class BasicBlock(nn.Module):
 
 
 class Bottleneck(nn.Module):
-    """
-    Bottleneck block for ResNet-50/101/152.
-    
-    Structure: Conv1x1 -> BN -> ReLU -> Conv3x3 -> BN -> ReLU -> Conv1x1 -> BN -> (+shortcut) -> ReLU
-    """
+
     expansion = 4
 
     def __init__(self, in_planes: int, planes: int, stride: int = 1,
@@ -138,27 +120,7 @@ class Bottleneck(nn.Module):
 
         return out
 
-
-# ===================================================================================
-# RESNET MAIN CLASS
-# ===================================================================================
-
 class ResNet(nn.Module):
-    """
-    ResNet architecture with configurable options.
-    
-    Args:
-        block: Block type (BasicBlock or Bottleneck)
-        layers: Number of blocks in each layer
-        num_classes: Number of output classes
-        width_multiplier: Width multiplier for channel scaling
-        attention_type: Type of attention ('none', 'se', 'cbam', 'coordinate', 'eca')
-        attention_reduction: Reduction ratio for attention
-        drop_path_rate: Maximum drop path rate (stochastic depth)
-        dropout_rate: Dropout rate before final classifier
-        zero_init_residual: Zero-initialize the last BN in each residual branch
-        cifar: Use CIFAR-style stem (3x3 conv) instead of ImageNet (7x7 conv + pool)
-    """
     def __init__(self, 
                  block: Type[Union[BasicBlock, Bottleneck]], 
                  layers: List[int],
@@ -306,11 +268,6 @@ class ResNet(nn.Module):
         
         return features
 
-
-# ===================================================================================
-# MODEL CONSTRUCTORS
-# ===================================================================================
-
 def resnet18_base(num_classes: int = 10, **kwargs) -> ResNet:
     """ResNet-18 for CIFAR"""
     return ResNet(BasicBlock, [2, 2, 2, 2], num_classes=num_classes, cifar=True, **kwargs)
@@ -340,11 +297,6 @@ def resnet50_teacher(num_classes: int = 10):
         return model
     except:
         return resnet50_base(num_classes=num_classes)
-
-
-# ===================================================================================
-# TESTING
-# ===================================================================================
 
 if __name__ == "__main__":
     # Test models

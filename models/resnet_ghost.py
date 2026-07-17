@@ -1,33 +1,15 @@
-"""
-===================================================================================
-Ghost-ResNet Implementation
-===================================================================================
-Combines ResNet architecture with Ghost Modules and Attention mechanisms
-for efficient inference with minimal accuracy loss.
-===================================================================================
-"""
 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from typing import Type, List, Optional, Union
 import math
-
 from models.layers.ghost_module import GhostModule, GhostBottleneck
 from models.layers.attention import get_attention, CoordinateAttention
 from models.layers.drop_path import DropPath
 
-
-# ===================================================================================
-# GHOST BASIC BLOCK
-# ===================================================================================
-
 class GhostBasicBlock(nn.Module):
-    """
-    Ghost Basic Block for ResNet-18/34 style networks.
-    
-    Replaces standard convolutions with Ghost Modules for efficiency.
-    """
+
     expansion = 1
 
     def __init__(self, in_planes: int, planes: int, stride: int = 1,
@@ -71,11 +53,7 @@ class GhostBasicBlock(nn.Module):
 
 
 class GhostBottleneckBlock(nn.Module):
-    """
-    Ghost Bottleneck Block for ResNet-50/101 style networks.
-    
-    Uses Ghost Modules in the expansion/projection stages.
-    """
+
     expansion = 4
 
     def __init__(self, in_planes: int, planes: int, stride: int = 1,
@@ -129,27 +107,8 @@ class GhostBottleneckBlock(nn.Module):
         out += identity
         return F.relu(out)
 
-
-# ===================================================================================
-# GHOST RESNET
-# ===================================================================================
-
 class GhostResNet(nn.Module):
-    """
-    Ghost-ResNet: Efficient ResNet with Ghost Modules and Attention.
-    
-    Args:
-        block: Block type (GhostBasicBlock or GhostBottleneckBlock)
-        layers: Number of blocks per layer
-        num_classes: Number of output classes
-        width_multiplier: Channel width multiplier
-        attention_type: Attention type ('coordinate', 'se', 'cbam', 'eca', 'none')
-        attention_reduction: Attention reduction ratio
-        ghost_ratio: Ghost module ratio (higher = more efficient)
-        drop_path_rate: Stochastic depth rate
-        dropout_rate: Classifier dropout rate
-        cifar: Use CIFAR-style stem
-    """
+
     def __init__(self,
                  block: Type[Union[GhostBasicBlock, GhostBottleneckBlock]],
                  layers: List[int],
@@ -283,11 +242,6 @@ class GhostResNet(nn.Module):
         
         return features
 
-
-# ===================================================================================
-# MODEL CONSTRUCTORS
-# ===================================================================================
-
 def ghost_resnet18(num_classes: int = 10, **kwargs) -> GhostResNet:
     """Ghost-ResNet-18 for CIFAR"""
     return GhostResNet(GhostBasicBlock, [2, 2, 2, 2], num_classes=num_classes, **kwargs)
@@ -312,11 +266,6 @@ def ghost_resnet_small(num_classes: int = 10, **kwargs) -> GhostResNet:
 def ghost_resnet_tiny(num_classes: int = 10, **kwargs) -> GhostResNet:
     """Tiny Ghost-ResNet with width multiplier 0.25"""
     return ghost_resnet18(num_classes=num_classes, width_multiplier=0.25, **kwargs)
-
-
-# ===================================================================================
-# TESTING
-# ===================================================================================
 
 if __name__ == "__main__":
     # Test models

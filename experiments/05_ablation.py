@@ -27,7 +27,7 @@ import copy
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.cuda.amp import GradScaler, autocast
+from torch.amp import GradScaler, autocast
 from tqdm import tqdm
 import numpy as np
 
@@ -95,7 +95,7 @@ def quick_train(
     else:
         scheduler = None
     
-    scaler = GradScaler(enabled=use_amp)
+    scaler = GradScaler('cuda', enabled=use_amp)
     
     history = {'train_loss': [], 'train_acc': [], 'val_acc': [], 'lr': []}
     best_acc = 0
@@ -111,7 +111,7 @@ def quick_train(
             
             optimizer.zero_grad()
             
-            with autocast(enabled=use_amp):
+            with autocast(device_type='cuda', enabled=use_amp):
                 outputs = model(inputs)
                 loss = criterion(outputs, targets)
             

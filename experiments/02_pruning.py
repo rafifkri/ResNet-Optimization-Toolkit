@@ -1,19 +1,3 @@
-"""
-02_pruning.py - Comprehensive Structured Pruning Experiment
-
-This script implements various pruning techniques for ResNet optimization:
-1. Unstructured Pruning (L1, Random)
-2. Structured Pruning (Filter/Channel pruning)
-3. Iterative Pruning with Fine-tuning
-4. Global vs Local Pruning
-5. Sensitivity Analysis
-
-Reference Papers:
-- Learning both Weights and Connections (Han et al., 2015)
-- Filter Pruning via Geometric Median (He et al., CVPR 2019)
-- Rethinking the Value of Network Pruning (Liu et al., ICLR 2019)
-"""
-
 import os
 import sys
 import json
@@ -28,7 +12,7 @@ import torch
 import torch.nn as nn
 import torch.nn.utils.prune as prune
 import torch.optim as optim
-from torch.cuda.amp import GradScaler, autocast
+from torch.amp import GradScaler, autocast
 from tqdm import tqdm
 import numpy as np
 
@@ -321,7 +305,7 @@ def iterative_pruning(
     criterion = LabelSmoothingCrossEntropy(smoothing=0.1)
     optimizer = optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=0.01)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs_per_iteration * num_iterations)
-    scaler = GradScaler(enabled=use_amp)
+    scaler = GradScaler('cuda', enabled=use_amp)
     
     history = {
         'iteration': [],
@@ -387,7 +371,7 @@ def iterative_pruning(
                 
                 optimizer.zero_grad()
                 
-                with autocast(enabled=use_amp):
+                with autocast(device_type='cuda', enabled=use_amp):
                     outputs = model(inputs)
                     loss = criterion(outputs, targets)
                 
@@ -702,7 +686,7 @@ def finetune_pruned_model(
     criterion = LabelSmoothingCrossEntropy(smoothing=0.1)
     optimizer = optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=0.01)
     scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
-    scaler = GradScaler(enabled=use_amp)
+    scaler = GradScaler('cuda', enabled=use_amp)
     
     best_acc = 0
     best_state = None
@@ -719,7 +703,7 @@ def finetune_pruned_model(
             
             optimizer.zero_grad()
             
-            with autocast(enabled=use_amp):
+            with autocast(device_type='cuda', enabled=use_amp):
                 outputs = model(inputs)
                 loss = criterion(outputs, targets)
             

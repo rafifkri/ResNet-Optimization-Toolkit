@@ -1,19 +1,10 @@
-"""
-===================================================================================
-Experiment 01: Baseline Training
-===================================================================================
-Train baseline ResNet and Ghost-ResNet models with comprehensive logging,
-evaluation, and checkpointing for research comparison.
-===================================================================================
-"""
-
 import os
 import sys
 import argparse
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.cuda.amp import autocast, GradScaler
+from torch.amp import autocast, GradScaler
 from tqdm import tqdm
 from typing import Dict, Tuple, Optional
 import time
@@ -30,11 +21,6 @@ from utils import (
     mixup_data, mixup_criterion, cutmix_data, LabelSmoothingCrossEntropy
 )
 
-
-# ===================================================================================
-# TRAINING FUNCTIONS
-# ===================================================================================
-
 def train_one_epoch(model: nn.Module,
                     train_loader: torch.utils.data.DataLoader,
                     criterion: nn.Module,
@@ -43,22 +29,7 @@ def train_one_epoch(model: nn.Module,
                     epoch: int,
                     config: ExperimentConfig,
                     scaler: Optional[GradScaler] = None) -> Tuple[float, float]:
-    """
-    Train model for one epoch.
-    
-    Args:
-        model: Model to train
-        train_loader: Training data loader
-        criterion: Loss function
-        optimizer: Optimizer
-        device: Device to train on
-        epoch: Current epoch number
-        config: Experiment configuration
-        scaler: GradScaler for mixed precision
-    
-    Returns:
-        (average_loss, accuracy)
-    """
+
     model.train()
     
     losses = AverageMeter('Loss')
@@ -86,7 +57,7 @@ def train_one_epoch(model: nn.Module,
         
         # Forward pass with AMP
         if config.train.use_amp and scaler is not None:
-            with autocast():
+            with autocast(device_type='cuda'):
                 outputs = model(inputs)
                 if mixed:
                     loss = mixup_criterion(criterion, outputs, targets_a, targets_b, lam)
@@ -148,18 +119,7 @@ def validate(model: nn.Module,
              val_loader: torch.utils.data.DataLoader,
              criterion: nn.Module,
              device: torch.device) -> Tuple[float, float]:
-    """
-    Validate model.
-    
-    Args:
-        model: Model to validate
-        val_loader: Validation data loader
-        criterion: Loss function
-        device: Device
-    
-    Returns:
-        (average_loss, accuracy)
-    """
+
     model.eval()
     
     losses = AverageMeter('Loss')
@@ -177,23 +137,9 @@ def validate(model: nn.Module,
     
     return losses.avg, top1.avg
 
-
-# ===================================================================================
-# MAIN TRAINING LOOP
-# ===================================================================================
-
 def train_baseline(config: ExperimentConfig, 
                    model_name: str = "ghost_resnet18") -> Dict:
-    """
-    Main training function.
-    
-    Args:
-        config: Experiment configuration
-        model_name: Name of model to train
-    
-    Returns:
-        Dictionary with training results
-    """
+
     # Setup
     setup_seed(config.train.seed, config.train.deterministic)
     device = config.get_device()
@@ -286,7 +232,7 @@ def train_baseline(config: ExperimentConfig,
     )
     
     # Mixed precision
-    scaler = GradScaler() if config.train.use_amp else None
+    scaler = GradScaler('cuda') if config.train.use_amp else None
     
     # Checkpoint manager
     checkpoint_manager = CheckpointManager(
@@ -412,11 +358,6 @@ def train_baseline(config: ExperimentConfig,
     logger.close()
     
     return results
-
-
-# ===================================================================================
-# MAIN
-# ===================================================================================
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Baseline Training')

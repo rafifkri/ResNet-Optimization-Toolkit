@@ -5,7 +5,7 @@ Configuration Module for ResNet Optimization Research
 Paper: Efficient ResNet Optimization via Ghost Modules, Coordinate Attention,
        Structured Pruning, Knowledge Distillation, and INT8 Quantization
 
-Author: [Your Name]
+Author: [Rafif Fikri]
 Date: 2026
 ===================================================================================
 """
@@ -68,7 +68,7 @@ class DataConfig:
     """Configuration for data loading and augmentation"""
     dataset: DatasetType = DatasetType.CIFAR10
     data_root: str = "./data"
-    batch_size: int = 256
+    batch_size: int = 512
     num_workers: int = 4
     pin_memory: bool = True
     val_split: float = 0.1  # 10% untuk validasi
@@ -149,8 +149,8 @@ class TrainConfig:
     # Scheduler
     scheduler: SchedulerType = SchedulerType.COSINE
     warmup_epochs: int = 5
-    warmup_lr: float = 1e-6
-    min_lr: float = 1e-6
+    warmup_lr: float = 1e-5
+    min_lr: float = 1e-4
     
     # For StepLR
     step_size: int = 30

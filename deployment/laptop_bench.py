@@ -148,7 +148,7 @@ def benchmark_pytorch_amp(
     
     # FP16 with AMP
     latencies_fp16 = []
-    with torch.no_grad(), torch.cuda.amp.autocast():
+    with torch.no_grad(), torch.amp.autocast(device_type='cuda'):
         for _ in range(num_warmup):
             _ = model(input_tensor)
         torch.cuda.synchronize()

@@ -52,28 +52,12 @@ MODEL_REGISTRY = {
 }
 
 
-# ===================================================================================
-# MODEL BUILDER
-# ===================================================================================
-
 def create_model(model_name: str, 
                  num_classes: int = 10,
                  pretrained: bool = False,
                  checkpoint_path: Optional[str] = None,
                  **kwargs) -> nn.Module:
-    """
-    Create a model by name.
-    
-    Args:
-        model_name: Name of the model (see MODEL_REGISTRY)
-        num_classes: Number of output classes
-        pretrained: Load pretrained weights (for torchvision models)
-        checkpoint_path: Path to custom checkpoint
-        **kwargs: Additional arguments for model constructor
-    
-    Returns:
-        nn.Module: The created model
-    """
+  
     model_name = model_name.lower()
     
     if model_name not in MODEL_REGISTRY:
@@ -108,16 +92,7 @@ def create_model(model_name: str,
 
 
 def get_model_info(model: nn.Module, input_size: tuple = (1, 3, 32, 32)) -> Dict[str, Any]:
-    """
-    Get model information (parameters, FLOPs, etc.)
-    
-    Args:
-        model: The model to analyze
-        input_size: Input tensor size
-    
-    Returns:
-        Dictionary with model information
-    """
+
     # Count parameters
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -157,11 +132,6 @@ def list_models() -> list:
 
 # Alias for backward compatibility
 get_available_models = list_models
-
-
-# ===================================================================================
-# TESTING
-# ===================================================================================
 
 if __name__ == "__main__":
     print("Available models:")

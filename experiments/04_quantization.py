@@ -1,20 +1,4 @@
-﻿"""
-04_quantization.py - Comprehensive Quantization Experiment
-
-This script implements various quantization techniques for ResNet optimization:
-1. Post-Training Static Quantization (PTQ)
-2. Post-Training Dynamic Quantization
-3. Quantization-Aware Training (QAT)
-4. FX Graph Mode Quantization (recommended for complex models)
-5. Mixed Precision Quantization
-6. Multi-Backend Support (fbgemm for x86, qnnpack for ARM)
-
-Reference Papers:
-- Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference (Jacob et al., CVPR 2018)
-- Data-Free Quantization Through Weight Equalization and Bias Correction (Nagel et al., ICCV 2019)
-"""
-
-import os
+﻿import os
 import sys
 import json
 import copy
@@ -37,7 +21,6 @@ from torch.quantization import (
     QuantStub,
     DeQuantStub
 )
-from torch.cuda.amp import GradScaler, autocast
 from tqdm import tqdm
 import numpy as np
 

@@ -1,0 +1,12 @@
+==================================================
+03:16:53 | INFO | Final Evaluation
+03:16:53 | INFO | ==================================================
+03:16:53 | INFO | No checkpoint found, using current model state
+03:18:36 | INFO | Test Accuracy: 93.79%                                                                                                                                         
+03:18:36 | INFO | Test Top-5 Accuracy: 99.68%
+03:18:36 | INFO | Teacher Accuracy: 76.72%
+03:18:36 | INFO | Accuracy Gap: -17.07%
+03:18:36 | INFO | Latency: 43.48 Â± 37.88 ms
+03:18:36 | INFO | 
+Results saved to weights\distillation_experiments\distillation_ghost_resnet18_ghost_resnet_small_20260130_141604
+03:18:36 | INFO | Logging closed
