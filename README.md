@@ -2,7 +2,6 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 > **Paper Title**: *Efficient ResNet Optimization via Ghost Modules, Coordinate Attention, Structured Pruning, Knowledge Distillation, and INT8 Quantization for Resource-Constrained Devices*
 
@@ -248,11 +247,6 @@ If you find this work useful, please cite:
   year={2026}
 }
 ```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - Ghost Module: [GhostNet (CVPR 2020)](https://arxiv.org/abs/1911.11907)
